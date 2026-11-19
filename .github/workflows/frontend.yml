@@ -1,0 +1,22 @@
+name: GB Date Filters JS
+
+on: [workflow_dispatch, push, pull_request]
+
+jobs:
+  run:
+    uses: flarum/framework/.github/workflows/REUSABLE_frontend.yml@2.x
+    with:
+      enable_bundlewatch: false
+      enable_prettier: true
+      enable_typescript: true
+
+      frontend_directory: ./js
+      backend_directory: .
+      js_package_manager: yarn
+      main_git_branch: 2.x
+
+      git_actor_name: ${{ vars.GIT_ACTOR_NAME }}
+      git_actor_email: ${{ vars.GIT_ACTOR_EMAIL }}
+
+    secrets:
+      git_actor_token: ${{ secrets.GIT_ACTOR_TOKEN }}
